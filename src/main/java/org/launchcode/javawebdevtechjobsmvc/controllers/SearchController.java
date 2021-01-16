@@ -7,6 +7,7 @@ import org.springframework.ui.Model;
 import org.springframework.web.bind.annotation.*;
 
 import java.util.ArrayList;
+import java.util.List;
 
 import static org.launchcode.javawebdevtechjobsmvc.controllers.ListController.columnChoices;
 
@@ -24,5 +25,18 @@ public class SearchController {
     }
 
     // TODO #3 - Create a handler to process a search request and render the updated search view.
+
+    @PostMapping("results")
+    public String displaySearchResults(Model model, String searchTerm, String searchType) {
+        List<Job> jobs = new ArrayList<>();
+        if (searchTerm.equalsIgnoreCase("all") || searchTerm.isEmpty()) {
+            jobs = JobData.findAll();
+        } else {
+            jobs = JobData.findByColumnAndValue(searchType, searchTerm);
+        }
+        model.addAttribute("jobs", jobs);
+        model.addAttribute("columns", columnChoices);
+        return "search";
+    }
 
 }
