@@ -31,6 +31,8 @@ table.job-listing {
 
 table.job-listing td:first-child {
     font-weight: bold;
+    font-style: italic;
+    color: purple;
 }
 
 table.job-listing td:last-child {
