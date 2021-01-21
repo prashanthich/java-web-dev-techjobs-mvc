@@ -22,7 +22,7 @@ public class ListController extends TechJobsController {
 
     public ListController () {
 
-        tableChoices.put("all", JobData.findAll());
+        //tableChoices.put("all", JobData.findAll());
         tableChoices.put("employer", JobData.getAllEmployers());
         tableChoices.put("location", JobData.getAllLocations());
         tableChoices.put("positionType", JobData.getAllPositionTypes());
